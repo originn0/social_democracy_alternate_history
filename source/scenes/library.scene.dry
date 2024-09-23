@@ -74,22 +74,18 @@ go-to: menu
 
 **Projected election results** (if the election were to be held now):
 
-<<<<<<< HEAD
+
 =======
-# 1928: 30, 1930: 25, 1932: 22
-SPD: [+ spd_votes +]%
-
-[? if sapd_formed: [+ sapd_votes +]% ?]
-
-# 1928: 15, 1930: 15, 1932: 
-Z + BVP: [+ z_votes +]%
-
->>>>>>> upstream/main
 # 1928: 10, 1930: 13
 KPD: [+ kpd_votes +]%
 
+[? if sapd_formed:KPD: [+ sapd_votes +]% ?]
+
 # 1928: 30, 1930: 25, 1932: 22
 SPD: [+ spd_votes +]%
+
+# 1928: 15, 1930: 15, 1932: 
+Z + BVP: [+ z_votes +]%
 
 # 1928: 5, 1930: 4 (as DstP)
 LVP: [+ lvp_votes +]%
@@ -328,16 +324,10 @@ if (d3 && window) {
     parliament.exit.toCenter(false).bigToSmall(true);
     d3.select("#reichstag").datum(data).call(parliament);
 
-<<<<<<< HEAD
-    var lines = d3.linegraph(false, false, ['kpd', 'spd', 'lvp', 'z', 'other', 'dnvp', 'nsdap'],
-    {'kpd': '#8B0000', 'spd': '#E3000F', 'lvp': '#FFCC00', 'z': '#000', 'other': '#a0a0a0', 'dnvp': '#3f7bc1', 'nsdap': '#954B00'},
-    {'kpd': 'KPD', 'spd': 'SPD', 'lvp': 'LVP', 'z': Q.z_party_name + ' + BVP', 'other':'Others', 'dnvp': 'DNVP', 'nsdap': 'NSDAP'});
-=======
     var lines = d3.linegraph(false, false,
             Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': 'DDP', 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
->>>>>>> upstream/main
+            {'kpd': '#8B0000', 'sapd': '#c40000', 'spd': '#E3000F', 'lvp': '#FFCC00', 'z': '#000', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0'},
+            {'kpd': 'KPD', 'sapd': 'SAPD', 'spd': 'SPD', 'lvp': 'LVP', 'z': 'Q.z_party_name + ' + BVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     d3.select("#election_history").datum(Q.election_records).call(lines);
@@ -345,16 +335,10 @@ if (d3 && window) {
 
     // party support records should not have so many ticks
     if (!Q.historical_mode) {
-<<<<<<< HEAD
-        var lines_2 = d3.linegraph(true, true, ['kpd', 'spd', 'lvp', 'z', 'other', 'dnvp', 'nsdap'],
-        {'kpd': '#8B0000', 'spd': '#E3000F', 'lvp': '#FFCC00', 'z': '#000', 'other': '#a0a0a0', 'dnvp': '#3f7bc1', 'nsdap': '#954B00'},
-        {'kpd': 'KPD', 'spd': 'SPD', 'lvp': 'LVP', 'z': Q.z_party_name + ' + BVP', 'other':'Others', 'dnvp': 'DNVP', 'nsdap': 'NSDAP'});
-=======
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': 'DDP', 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
->>>>>>> upstream/main
+            {'kpd': '#8B0000', 'sapd': '#c40000', 'spd': '#E3000F', 'lvp': '#FFCC00', 'z': '#000', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0'},
+            {'kpd': 'KPD', 'sapd': 'SAPD', 'spd': 'SPD', 'lvp': 'LVP', 'z': 'Q.z_party_name + ' + BVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -378,15 +362,11 @@ if (d3 && window) {
 {!<table>!}
 {!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!} KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
-
-<<<<<<< HEAD
-{!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!}
-=======
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
->>>>>>> upstream/main
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!}
 
