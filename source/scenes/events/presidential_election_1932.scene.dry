@@ -74,7 +74,6 @@ choose-if: spd_votes >= z_votes
 unavailable-subtitle: The [? if z_party_name = "Z" : Center ?][? if z_party_name = "CVP" : CVP?] knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.z_support_braun = 0;
-if (Q.z_relation >= 55) {
 if (Q.z_relation >= 55 || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
     Q.z_support_braun = 1;
 } else if (Q.z_relation <= 35) {
@@ -119,7 +118,6 @@ choose-if: spd_votes >= kpd_votes
 unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
 max-visits: 1
 
-The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Braun; how do we convince them? ?][? if kpd_relation < 50 : They do not seem willing to be convinced. ?]
 The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Braun; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
 
 - @kpd_resources: Use our resources.
@@ -137,7 +135,6 @@ go-to: braun_campaign
 The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
 @kpd_relations
-view-if: kpd_relation >= 60
 view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
 unavailable-subtitle: Our relations are not good enough.
 on-arrival: kpd_support_braun = 1
@@ -306,7 +303,6 @@ unavailable-subtitle: The [? if z_party_name = "Z" : Center ?][? if z_party_name
 on-arrival: {!
 Q.z_support_braun = 0;
 
-if (Q.z_relation >= 55) {
 if (Q.z_relation >= 55 || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
     Q.z_support_braun = 1;
     if (Q.hitler_support_hindenburg) {
@@ -418,7 +414,6 @@ go-to: round2_menu
 The KPD now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
 
 @r2_kpd_relations
-view-if: kpd_relation >= 60
 view-if: kpd_relation >= 60 or (kpd_party_leader == "Conciliators" and kpd_relation >= 45)
 unavailable-subtitle: Our relations are not good enough.
 on-arrival: kpd_support_braun = 1
