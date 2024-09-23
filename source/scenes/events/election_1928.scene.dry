@@ -86,7 +86,6 @@ Q.bourgeois_coalition = Q.lvp_r + Q.z_r + Q.other_r;
 Q.center_right_coalition = Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r;
 Q.right_coalition = Q.z_r + + Q.lvp_r + Q.other_r + Q.dnvp_r;
 Q.far_right_coalition = Q.dnvp_r + Q.nsdap_r;
-Q.left_coalition = Q.spd_r + Q.kpd_r;
 Q.left_coalition = Q.spd_r + Q.kpd_r + Q.sapd_r;
 // this is an absurd concept lol
 <<<<<<< HEAD
@@ -297,7 +296,6 @@ There are some potential coalition arrangements.
 - @grand_coalition
 - @new_grand_coalition
 - @unity_government
-- @right_coalition
 - @far_right_coalition
 - @no_majority
 - @brauns_dilemma
@@ -351,7 +349,6 @@ go-to: popular_front_success
 title: Convince the KPD to accept democracy.
 subtitle: [? if kpd_party_leader == "Conciliators" : The Conciliator leadership of the KPD at least claim to support the Popular Front. ?]
 unavailable-subtitle: Our relationship with the KPD is not high enough.
-choose-if: kpd_relation >= 60 and communist_coalition >= 3
 choose-if: (kpd_relation >= 60 and communist_coalition >= 3) or kpd_party_leader == "Conciliators"
 go-to: popular_front_success
 
@@ -444,8 +441,6 @@ Alternatively, Braun could use the emergency powers of the presidency. Article 4
 
 @left_coalition
 title: Is a United Left coalition possible?
-subtitle: SPD + KPD ([+ left_coalition +]%)
-unavailable-subtitle: SPD + KPD ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
 subtitle: SPD + KPD [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%)
 unavailable-subtitle: SPD + KPD [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
 view-if: left_coalition >= 50
@@ -498,7 +493,6 @@ go-to: left_coalition_success
 @left_coalition_relations
 title: Convince the KPD to accept democracy.
 unavailable-subtitle: Our relationships with the KPD are not good enough.
-choose-if: kpd_relation >= 60
 choose-if: kpd_relation >= 60 or kpd_party_leader == "Conciliators"
 go-to: left_coalition_success
 
@@ -541,8 +535,6 @@ subtitle: Z + BVP + DVP + DNVP + Others ([+ right_coalition +]%)
 unavailable-subtitle: The DNVP is not interested in a coalition with the Center.
 >>>>>>> upstream/main
 view-if: right_coalition >= 50
-choose-if: year < 1928
-go-to: no_right_coalition if year >= 1930; right_coalition_2 if year <= 1929
 choose-if: year < 1929
 
 <<<<<<< HEAD
@@ -575,7 +567,6 @@ choose-if: year < 1929
 on-arrival: spd_in_government = 0; spd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "DNVP"; justice_minister_party = "DNVP"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "DVP"; finance_minister_party = "Z"; agriculture_minister_party = "DNVP"; in_right_coalition = 1;
 >>>>>>> upstream/main
 
-Even though the DNVP is very reluctant to participate in such a coalition, given Hugenberg's anti-constitutional views, they still accede to President Hindenburg's wishes. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 Even though the DNVP is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
 
@@ -936,7 +927,6 @@ The next elections are set for [+ next_election_month : month +] [+ next_electio
 
 @no_confidence_win
 view-if: no_confidence_votes <= 50
-on-arrival: in_minority_government = 1
 on-arrival: in_minority_government = 1; in_emergency_government = 0;
 achievement: minderheitsregierung
 
@@ -1322,7 +1312,6 @@ go-to: no_govt_2
 
 @no_govt_2
 on-arrival: reformist_dissent += 25; center_dissent += 10; labor_dissent += 25; neorevisionist_dissent += 25; in_weimar_coalition = 0; in_grand_coalition = 0; chancellor = "Brüning" if chancellor == "Marx"; spd_in_government = 0; grand_coalition_failed = 1
-go-to: right_coalition_post_spd if right_coalition >= 50 and president != "Braun"; new_elections_spd if right_coalition < 50 and president != "Braun"; brauns_dilemma if president == "Braun"
 go-to: right_coalition_post_spd if right_coalition >= 50 and president != "Braun" and year < 1929; new_elections_spd if (right_coalition < 50 or year >= 1929) and president != "Braun"; brauns_dilemma if president == "Braun"
 
 
