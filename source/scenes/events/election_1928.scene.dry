@@ -888,9 +888,9 @@ We have won the vote of no confidence, and are currently ruling under an SPD min
 
 @weimar_coalition
 title: We can form a Weimar Coalition.
-subtitle: SPD + [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?] + LVP ([+ weimar_coalition +]%)
+subtitle: SPD + [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?] + LVP [? if sapd_formed and kpd_r >= 30 : + SAPD toleration ?] ([+ weimar_coalition +]%)
 view-if: weimar_coalition >= 50
-on-arrival: leverage += 10 if z_party_leader == "Joos"; in_weimar_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0
+on-arrival: leverage += 5; leverage += 5 if z_party_leader == "Joos"; in_weimar_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0
 achievement: weimar_coalition
 go-to: weimar_coalition_spd_lead if (n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30) or president = "Braun"; weimar_coalition_z_lead if president != "Braun" and ((n_elections > 1 and spd_r < 30) or (n_elections <= 1 and largest_party != "SPD"))
 
@@ -1209,7 +1209,7 @@ go-to: ministries
 Rudolf Breitscheid has been appointed chancellor.
 
 @z_chancellor
-title: Let the [? if z_party_name = "Z" : Center Party ?][? if z_Party_name = "CVP" : CVP?] have their chancellor.
+title: Let the [? if z_party_name = "Z" : Center Party ?][? if party_name = "CVP" : CVP?] have their chancellor.
 subtitle: Heinrich Brüning will be chancellor. This is unexpected and will cause internal dissent, but may give us a better position in negotiating for other cabinet positions.
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; z_relation += 10; lvp_relation += 5; kpd_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; leverage += 5
 go-to: ministries
