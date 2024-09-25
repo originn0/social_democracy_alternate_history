@@ -19,7 +19,9 @@ Resources available: [+ resources +]
 SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
 [? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
 
-[? if spd_in_government and not in_spd_majority : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+
+[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
@@ -139,16 +141,16 @@ Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: KPD: [+ workers_kpd_normalized +]%, SPD: [+ workers_spd_normalized +]%, LVP: [+ workers_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ workers_z_normalized +]%, DNVP: [+ workers_dnvp_normalized +]%, NSDAP: [+ workers_nsdap_normalized +]%, Others: [+ workers_other_normalized +]%
+Workers: KPD: [+ workers_kpd_normalized +]%, SPD: [+ workers_spd_normalized +]%, LVP: [+ workers_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ workers_z_normalized +]%, DNVP: [+ workers_dnvp_normalized +]%, NSDAP: [+ workers_nsdap_normalized +]%, Others: [+ workers_other_normalized +]% [? if sapd_formed: SAPD: [+ workers_sapd_normalized +]% ?]
 
-New Middle Class: KPD: [+ new_middle_kpd_normalized +]%, SPD: [+ new_middle_spd_normalized +]%, LVP: [+ new_middle_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ new_middle_z_normalized +]%, DNVP: [+ new_middle_dnvp_normalized +]%, NSDAP: [+ new_middle_nsdap_normalized +]%, Others: [+ new_middle_other_normalized +]%
+New Middle Class: KPD: [+ new_middle_kpd_normalized +]%, SPD: [+ new_middle_spd_normalized +]%, LVP: [+ new_middle_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ new_middle_z_normalized +]%, DNVP: [+ new_middle_dnvp_normalized +]%, NSDAP: [+ new_middle_nsdap_normalized +]%, Others: [+ new_middle_other_normalized +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_normalized +]% ?]
 
-Old Middle Class: KPD: [+ old_middle_kpd_normalized +]%, SPD: [+ old_middle_spd_normalized +]%, LVP: [+ old_middle_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ old_middle_z_normalized +]%, DNVP: [+ old_middle_dnvp_normalized +]%, NSDAP: [+ old_middle_nsdap_normalized +]%, Others: [+ old_middle_other_normalized +]%
+Old Middle Class: KPD: [+ old_middle_kpd_normalized +]%, SPD: [+ old_middle_spd_normalized +]%, LVP: [+ old_middle_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ old_middle_z_normalized +]%, DNVP: [+ old_middle_dnvp_normalized +]%, NSDAP: [+ old_middle_nsdap_normalized +]%, Others: [+ old_middle_other_normalized +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_normalized +]% ?]
 
-Rural: KPD: [+ rural_kpd_normalized +]%, SPD: [+ rural_spd_normalized +]%, LVP: [+ rural_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ rural_z_normalized +]%, DNVP: [+ rural_dnvp_normalized +]%, NSDAP: [+ rural_nsdap_normalized +]%, Others: [+ rural_other_normalized +]%
+Rural: KPD: [+ rural_kpd_normalized +]%, SPD: [+ rural_spd_normalized +]%, LVP: [+ rural_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ rural_z_normalized +]%, DNVP: [+ rural_dnvp_normalized +]%, NSDAP: [+ rural_nsdap_normalized +]%, Others: [+ rural_other_normalized +]% [? if sapd_formed: SAPD: [+ rural_sapd_normalized +]% ?]
 
-Unemployed: KPD: [+ unemployed_kpd_normalized +]%, SPD: [+ unemployed_spd_normalized +]%, LVP: [+ unemployed_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ unemployed_z_normalized +]%, DNVP: [+ unemployed_dnvp_normalized +]%, NSDAP: [+ unemployed_nsdap_normalized +]%, Others: [+ unemployed_other_normalized +]%
+Unemployed: KPD: [+ unemployed_kpd_normalized +]%, SPD: [+ unemployed_spd_normalized +]%, LVP: [+ unemployed_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ unemployed_z_normalized +]%, DNVP: [+ unemployed_dnvp_normalized +]%, NSDAP: [+ unemployed_nsdap_normalized +]%, Others: [+ unemployed_other_normalized +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_normalized +]% ?]
 
-Catholics: KPD: [+ catholics_kpd_normalized +]%, SPD: [+ catholics_spd_normalized +]%, LVP: [+ catholics_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ catholics_z_normalized +]%, DNVP: [+ catholics_dnvp_normalized +]%, NSDAP: [+ catholics_nsdap_normalized +]%, Others: [+ catholics_other_normalized +]%
+Catholics: KPD: [+ catholics_kpd_normalized +]%, SPD: [+ catholics_spd_normalized +]%, LVP: [+ catholics_lvp_normalized +]%, [? if z_party_name = "Z" : Z?][? if z_party_name = "CVP" : CVP?]: [+ catholics_z_normalized +]%, DNVP: [+ catholics_dnvp_normalized +]%, NSDAP: [+ catholics_nsdap_normalized +]%, Others: [+ catholics_other_normalized +]% [? if sapd_formed: SAPD: [+ catholics_sapd_normalized +]% ?]
 
 Support for the Republic: [+ pro_republic +]%
