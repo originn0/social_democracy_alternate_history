@@ -19,8 +19,10 @@
   var TITLE = "Social Democracy: An Alternate History" + '_' + "Autumn Chen";
 
   // the url is a link to game.json
+  // test url: https://aucchen.github.io/social_democracy_mods/v0.1.json
   // TODO; 
   window.loadMod = function(url) {
+      ui.loadGame(url);
   };
 
   window.showStats = function() {
@@ -28,6 +30,15 @@
         window.dendryUI.dendryEngine.goToScene('backSpecialScene');
     } else {
         window.dendryUI.dendryEngine.goToScene('library');
+    }
+  };
+
+  window.showMods = function() {
+    window.hideOptions();
+    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('mod_loader')) {
+        window.dendryUI.dendryEngine.goToScene('backSpecialScene');
+    } else {
+        window.dendryUI.dendryEngine.goToScene('mod_loader');
     }
   };
   
@@ -93,12 +104,22 @@
       window.dendryUI.saveSettings();
   };
 
+  window.enableImages = function() {
+      window.dendryUI.show_portraits = true;
+      window.dendryUI.saveSettings();
+  };
+
+  window.disableImages = function() {
+      window.dendryUI.show_portraits = false;
+      window.dendryUI.saveSettings();
+  };
 
   // populates the checkboxes in the options view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
     var animate = window.dendryUI.animate;
     var disable_audio = window.dendryUI.disable_audio;
+    var show_portraits = window.dendryUI.show_portraits;
     if (disable_bg) {
         $('#backgrounds_no')[0].checked = true;
     } else {
@@ -113,6 +134,11 @@
         $('#audio_no')[0].checked = true;
     } else {
         $('#audio_yes')[0].checked = true;
+    }
+    if (show_portraits) {
+        $('#images_yes')[0].checked = true;
+    } else {
+        $('#images_no')[0].checked = true;
     }
   };
 
@@ -204,7 +230,7 @@
   console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
 
   window.onload = function() {
-    window.dendryUI.loadSettings();
+    window.dendryUI.loadSettings({show_portraits: false});
     window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
   };
 

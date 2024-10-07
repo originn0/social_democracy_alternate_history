@@ -5,6 +5,9 @@ priority: -1
 view-if: (year = next_election_year and month >= next_election_month) or (year > next_election_year)
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48;
 set-jump: post_election_1928
+#face-image: img/Rothe_Wahlen_1903.jpg
+
+# TODO: should there be an image?
 
 # the low priority means that this event is only seen after all other events are resolved for the month.
 
@@ -421,7 +424,7 @@ title: Is a United Left coalition possible?
 subtitle: SPD + KPD [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%)
 unavailable-subtitle: SPD + KPD [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the KPD. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
 view-if: left_coalition >= 50
-choose-if: kpd_relation >= 50 and communist_coalition >= 3
+choose-if: (kpd_relation >= 50 or (kpd_party_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3
 
 There are enough votes for a SPD + KPD coalition government, if such a thing were actually possible.
 
