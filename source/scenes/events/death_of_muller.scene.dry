@@ -44,7 +44,7 @@ subtitle: The Center Party claims it is their turn...
 The Center Party is grateful that we have supported Brüning for Chancellor.
 
 @wirth_chancellor
-on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; z_relation += 5; dvp_relation += 2
+on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; z_relation += 5; lvp_relation += 2
 view-if: z_party_leader = "Joos"
 subtitle: As a moderate member of the Center Party, he could represent unity.
 

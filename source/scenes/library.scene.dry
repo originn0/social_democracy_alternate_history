@@ -70,19 +70,16 @@ President: [+ president +]
 Chancellor: [+ chancellor +] ([+ chancellor_party +])
 
 Reichstag composition:
-
-# 1928: 30, 1930: 25, 1932: 22
-SPD: [+ spd_r +]%
-[? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
-# 1928: 15, 1930: 15, 1932: 
-Z + BVP: [+ z_r +]%
 # 1928: 10, 1930: 13
 KPD: [+ kpd_r +]%
+[? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
+# 1928: 30, 1930: 25, 1932: 22
+SPD: [+ spd_r +]%
 # 1928: 5, 1930: 4 (as DstP)
-DDP: [+ ddp_r +]%
+LVP: [+ lvp_r +]%
+# 1928: 15, 1930: 15, 1932: 
+[+ z_party_name +] + BVP: [+ z_r +]%
 # 1928: 9, 1930: 5
-DVP: [+ dvp_r +]%
-# 1928: 14, 1930: 7
 DNVP: [+ dnvp_r +]%
 # 1928: 3, 1930: 18
 NSDAP: [+ nsdap_r +]%
