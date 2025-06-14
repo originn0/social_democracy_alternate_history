@@ -155,12 +155,12 @@ Q.election_records.push(election_result);
 !}
 on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and fe_jons_r >= 15)
 on-display: {!
-data = [
-   {
+let data = [
+    {
         "id": "cnt_fai",
         "legend": "CNT_FAI",
         "name": "CNT_FAI",
-        "seats": Math.round(Q.cnt_fai_r = 0),
+        "seats": Math.round(Q.cnt_fai_r*5),
     },
     {
         "id": "pce",
@@ -174,11 +174,11 @@ data = [
         "name": "PSOE",
         "seats": Math.round(Q.psoe_r*5),
     },
-     {
+    {
         "id": "erc",
         "legend": "ERC",
         "name": "ERC",
-        "seats": Math.round(Q.erc_r * 5 * 0.7),
+        "seats": Math.round(Q.erc_r*5*0.7),
     },
     {
         "id": "izqd_rep",
@@ -202,7 +202,7 @@ data = [
         "id": "pnv",
         "legend": "PNV",
         "name": "PNV",
-        "seats": Math.round(Q.erc_r * 5 * 0.3),
+        "seats": Math.round(Q.pnv_r*5),
     },
     {
         "id": "ceda",
@@ -211,14 +211,17 @@ data = [
         "seats": Math.round(Q.ceda_r*5),
     },
 ];
-if (Q.ren_esp_formed == 1 && Q.ren:esp_r) {
+
+if (Q.ren_esp_formed === 1 && Q.ren_esp_r) {
     data.push({
-            "id": "ren_esp",
-            "legend": "RE",
-            "name": "RE",
-            "seats": Math.round(Q.ren_esp_r*5),
-            });
+        "id": "ren_esp",
+        "legend": "RE",
+        "name": "RE",
+        "seats": Math.round(Q.ren_esp_r*5),
+    });
 }
+
+data = data.concat([
     {
         "id": "com_trad",
         "legend": "CT",
@@ -231,6 +234,7 @@ if (Q.ren_esp_formed == 1 && Q.ren:esp_r) {
         "name": "FE_JONS",
         "seats": Math.round(Q.fe_jons_r*5),
     },
+]);
 if (window && d3) {
     var width = 500; 
     var height = 500;
